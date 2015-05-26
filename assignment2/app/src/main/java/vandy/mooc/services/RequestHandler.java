@@ -62,16 +62,20 @@ class RequestHandler extends Handler {
 
         // Get the reply Messenger.
         // TODO -- you fill in here.
+        final Messenger messenger = requestMessage.getMessenger();
 
         // Get the URL associated with the message data.
         // TODO -- you fill in here.
+        final Uri imageUrl = requestMessage.getImageURL();
 
         // Get the directory pathname where the image will be stored.
         // TODO -- you fill in here.
+        final String directoryPathname = requestMessage.getDirectoryPathname();
 
         // Get the requestCode for the operation that was invoked by
         // the Activity.
         // TODO -- you fill in here.
+        final int requestCode = requestMessage.getRequestCode();
 
         // A Runnable that downloads the image, stores it in a file,
         // and sends the path to the file back to the Activity.
@@ -84,17 +88,20 @@ class RequestHandler extends Handler {
                 public void run() {
                     // Download and store the requested image.
                     // TODO -- you fill in here.
+                    Uri downloadedImage = Utils.downloadImage(mService.get(), imageUrl, directoryPathname);
 
                     // Send the path to the image file, url, and
                     // requestCode back to the Activity via the
                     // replyMessenger.
                     // TODO -- you fill in here.
+                    sendPath(messenger, downloadedImage, imageUrl, requestCode);
                 }
             };
 
         // Execute the downloadImageAndReply Runnable to download the
         // image and reply.
         // TODO -- you fill in here.
+        mExecutorService.execute(downloadImageAndReply);
     }
 
     /**
@@ -108,6 +115,7 @@ class RequestHandler extends Handler {
         // Call the makeReplyMessage() factory method to create
         // Message.
         // TODO -- you fill in here.
+        ReplyMessage replyMessage = ReplyMessage.makeReplyMessage(pathToImageFile, url, requestCode);
 
         try {
             Log.d(TAG,
@@ -117,6 +125,7 @@ class RequestHandler extends Handler {
 
             // Send the replyMessage back to the Activity.
             // TODO -- you fill in here.
+            messenger.send(replyMessage.getMessage());
         } catch (Exception e) {
             Log.e(getClass().getName(),
                   "Exception while sending reply message back to Activity.",
@@ -129,7 +138,8 @@ class RequestHandler extends Handler {
      */
     public void shutdown() {
         // Immediately shutdown the ExecutorService.
-        // TODO -- you fill in here.        
+        // TODO -- you fill in here.
+        mExecutorService.shutdownNow();
     }
 }
 
