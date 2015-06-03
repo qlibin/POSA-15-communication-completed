@@ -54,27 +54,27 @@ public class DownloadImageService extends IntentService {
      * to store a downloaded image.
      */
     private static final String DIRECTORY_PATHNAME = "DIRECTORY_PATHNAME";
-    
+
     public DownloadImageService() {
-    	super("DownloadImageService");
+        super("DownloadImageService");
     }
 
     /**
      * Factory method that returns an Intent for downloading an image.
      */
     public static Intent makeIntent(Context context,
-                                    int requestCode, 
+                                    int requestCode,
                                     Uri url,
                                     String directoryPathname,
                                     Handler downloadHandler) {
         // Create an intent that will download the image from the web.
-    	// TODO -- you fill in here, replacing "null" with the proper
-    	// code, which involves (1) setting the URL as "data" to the
-    	// intent, (2) putting the request code as an "extra" to the
-    	// intent, (3) creating and putting a Messenger as an "extra"
-    	// to the intent so the DownloadImageService can send the path
-    	// to the image file back to the MainActivity, and (3) putting
-    	// the directory pathname as an "extra" to the intent
+        // TODO -- you fill in here, replacing "null" with the proper
+        // code, which involves (1) setting the URL as "data" to the
+        // intent, (2) putting the request code as an "extra" to the
+        // intent, (3) creating and putting a Messenger as an "extra"
+        // to the intent so the DownloadImageService can send the path
+        // to the image file back to the MainActivity, and (3) putting
+        // the directory pathname as an "extra" to the intent
         // to tell the Service where to place the image within
         // external storage.
 
@@ -98,10 +98,10 @@ public class DownloadImageService extends IntentService {
     }
 
     public static int getResultCode(Message message) {
-      // Check to see if the download succeeded.
-      return message.arg1;
+        // Check to see if the download succeeded.
+        return message.arg1;
     }
-    
+
     /**
      * Helper method that returns the request code associated with
      * the @a message.
@@ -160,7 +160,7 @@ public class DownloadImageService extends IntentService {
      * Send the pathname back to the MainActivity via the
      * messenger.
      */
-    private void sendPath(Messenger messenger, 
+    private void sendPath(Messenger messenger,
                           Uri pathToImageFile,
                           Uri url) {
         // Call the makeReplyMessage() factory method to create
