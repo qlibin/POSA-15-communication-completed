@@ -1,4 +1,4 @@
-package mooc.vandy.activities;
+package vandy.mooc.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
