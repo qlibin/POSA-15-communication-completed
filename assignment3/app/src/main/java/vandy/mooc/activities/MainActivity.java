@@ -152,12 +152,12 @@ public class MainActivity extends LifecycleLoggingActivity {
     /**
      * Display the results to the screen.
      * 
-     * @param results
+     * @param result
      *            List of Results to be displayed.
      */
-    public void displayResults(WeatherData results,
+    public void displayResults(WeatherData result,
                                String errorMessage) {
-        if (results == null) {
+        if (result == null) {
             Utils.showToast(this,
                     errorMessage);
             // display results
@@ -173,10 +173,10 @@ public class MainActivity extends LifecycleLoggingActivity {
                                 "Temperature: %.0fF\n" +
                                 "Humidity: %d%%\n" +
                                 "Wind speed: %.2fmph\n",
-                                results.getmName(),
-                                results.getmTemp(),
-                                results.getmHumidity(),
-                                results.getmSpeed()
+                                result.getmName(),
+                                result.getmTemp(),
+                                result.getmHumidity(),
+                                result.getmSpeed()
                         )
                 );
             } catch (Exception e) {
