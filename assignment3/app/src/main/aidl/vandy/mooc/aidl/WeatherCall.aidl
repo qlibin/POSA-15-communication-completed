@@ -15,5 +15,5 @@ interface WeatherCall {
     * a list of WeatherData objects containing the results from the
     * Weather Service web service back to the WeatherActivity.
     */
-    List<WeatherData> getCurrentWeather(in String Weather); 
+    WeatherData getCurrentWeather(in String Weather);
 }
