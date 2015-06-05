@@ -27,7 +27,7 @@
 
         <service
             android:name=".services.WeatherServiceSync"
-            android:process=":remote2">
+            android:process=":remote1">
         </service>
     </application>
 
