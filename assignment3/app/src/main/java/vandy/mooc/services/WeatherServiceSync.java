@@ -1,11 +1,9 @@
 package vandy.mooc.services;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import vandy.mooc.aidl.WeatherCall;
 import vandy.mooc.aidl.WeatherData;
-import vandy.mooc.utils.Utils;
+import vandy.mooc.utils.WeatherWebService;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.IBinder;
@@ -70,7 +68,7 @@ public class WeatherServiceSync extends LifecycleLoggingService {
             @Override
             public WeatherData getCurrentWeather(String weather) throws RemoteException {
                 final WeatherData weatherResults =
-                        Utils.getResult(weather);
+                        WeatherWebService.getResult(weather);
 
                 if (weatherResults != null) {
                     Log.d(TAG, "results for weather: "

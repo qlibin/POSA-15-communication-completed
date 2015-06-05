@@ -1,11 +1,10 @@
 package vandy.mooc.services;
 
-import java.util.List;
-
 import vandy.mooc.aidl.WeatherData;
 import vandy.mooc.aidl.WeatherRequest;
 import vandy.mooc.aidl.WeatherResults;
-import vandy.mooc.utils.Utils;
+import vandy.mooc.utils.WeatherWebService;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.IBinder;
@@ -79,7 +78,7 @@ public class WeatherServiceAsync extends LifecycleLoggingService {
                 // Call the Weather Web service to get the weather
                 // information for the location.
                 final WeatherData weatherResult =
-                        Utils.getResult(location);
+                        WeatherWebService.getResult(location);
 
                 if (weatherResult != null) {
                     Log.d(TAG, "result for location: "
