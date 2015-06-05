@@ -111,7 +111,7 @@ public class WeatherWebService {
 
     public static class Cache<K, V> {
 
-        private int DEFAULT_EXPIRATION_TIME = 60000;
+        private int DEFAULT_EXPIRATION_TIME = 10000;
 
         private int expirationTime;
 
